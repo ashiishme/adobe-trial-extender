@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<?import javafx.scene.text.TextFlow?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuItem?>
+
+<BorderPane fx:id="trailExt" id="verticalBox" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.121"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdobeTrial.Controller">
+
+    <top>
+
+        <MenuBar id="topMenu">
+            <Menu text="Help">
+                <!--<MenuItem text="How To?"/>-->
+                <!--<MenuItem text="Credits"/>-->
+                <!--<MenuItem text="License"/>-->
+                <MenuItem text="Visit Site" onAction="#openSite"/>
+            </Menu>
+        </MenuBar>
+
+    </top>
+
+    <center>
+
+        <VBox>
+
+            <padding>
+
+                <Insets top="10" right="10" left="10" bottom="10"/>
+
+            </padding>
+
+            <Label id="supportedProduct" text="Select Adobe Product:"/>
+
+            <ComboBox fx:id="productList" onAction="#selectedProduct" id="adobeProductList" maxWidth="350" >
+
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="Adobe Photoshop CC 2018"/>
+                        <String fx:value="Adobe Illustrator CC 2018"/>
+                        <String fx:value="Adobe Premiere Pro CC 2018"/>
+                        <String fx:value="Adobe After Effects CC 2018"/>
+                        <String fx:value="Adobe Dreamweaver CC 2018"/>
+                        <String fx:value="Adobe Lightroom CC"/>
+                        <String fx:value="Adobe InDesign CC 2018"/>
+                    </FXCollections>
+                </items>
+
+                <VBox.margin>
+                    <Insets>
+                        <bottom>10</bottom>
+                    </Insets>
+                </VBox.margin>
+
+            </ComboBox>
+
+            <Label id="pathLabel" text="Path: (Product root directory)"/>
+
+            <HBox spacing="10">
+
+                <TextField id="pathfield" fx:id="pathField" editable="false" prefWidth="272"/>
+
+                <Button id="selectfile" onAction="#selectFile" text="Select" />
+
+                <padding>
+
+                    <Insets bottom="10"/>
+
+                </padding>
+
+            </HBox>
+
+            <VBox fx:id="vbox" style="-fx-background-color: #455A64;">
+            <ScrollPane fx:id="scrollpane" fitToHeight="true" fitToWidth="true">
+                <TextFlow fx:id="consoleOutput" id="output" prefWidth="250" prefHeight="200"/>
+            </ScrollPane>
+
+            </VBox>
+
+        </VBox>
+
+    </center>
+
+    <bottom>
+
+        <HBox spacing="10" alignment="top_right">
+
+            <padding>
+                <Insets bottom="10" right="10"/>
+            </padding>
+
+            <Button onAction="#patchAdobe" id="patch-btn" text="Patch" />
+
+            <Button id="cancel-btn" text="Cancel" onAction="#closeAdobeTrial" />
+
+        </HBox>
+
+    </bottom>
+
+</BorderPane>
